@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p> 1) {{ 2+2 }} </p>
+        <p> 2) {{ "teste".toUpperCase() }}</p>
+        <p> 3) Produto: {{ nome }}, R$ {{ preco }}, {{ desconto * 100 }}%</p>
+        <p> 4) Total: R$ {{ precoComDesconto }}</p>
+        <p> Hora: {{ horaCerta() }}</p>
+    </div>
+    <script>
+        new Vue ({
+            el: "#app", // Define o elemento DOM com id "app" como a raiz do aplicativo Vue
+            data: {
+                nome: 'Caneta', // Define uma propriedade "nome" com o valor 'Caneta'
+                preco: 6.89, // Define uma propriedade "preco" com o valor 6.89
+                desconto: 0.15 // Define uma propriedade "desconto" com o valor 0.15
+            },
+            methods: {
+                horaCerta() { // Define um método "horaCerta" que retorna a hora atual
+                    return new Date().toLocaleString()
+                }
+            },
+            computed: {
+                precoComDesconto() { // Define uma propriedade computada "precoComDesconto" que calcula o preço com desconto
+                    return this.preco - (this.preco * this.desconto)
+                }
+            }
+            
+        })
+        /*
+            el: Essa propriedade é usada para indicar o elemento DOM (Documento Object Model) que será controlado pelo Vue.js. No código fornecido, el: "#app" significa que o Vue.js será aplicado ao elemento com o atributo id="app".
+
+            data: Essa propriedade é usada para definir os dados que serão utilizados no aplicativo Vue.js. No exemplo dado, data é um objeto que contém as propriedades nome, preco e desconto. Essas propriedades são acessíveis no HTML utilizando a sintaxe de interpolação {{ }}.
+
+            methods: Essa propriedade é utilizada para definir os métodos que podem ser chamados no aplicativo Vue.js. No código apresentado, existe um método chamado horaCerta(), que retorna a hora atual formatada utilizando o método toLocaleString() do objeto Date. No HTML, ele é chamado utilizando a sintaxe {{ horaCerta() }}.
+
+            computed: Essa propriedade é usada para definir propriedades computadas, que são valores que podem ser derivados dos dados existentes no objeto data. No exemplo, precoComDesconto é uma propriedade computada que calcula o preço com desconto, subtraindo o valor do desconto do preço original. A propriedade é atualizada automaticamente sempre que os dados relevantes são alterados.
+
+        */
+    </script>
+</body>
+</html>
