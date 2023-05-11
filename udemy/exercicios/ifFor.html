@@ -7,9 +7,37 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <p v-for="(aluno, i) in alunos">
+            {{i + 1 }}) {{aluno.nome}} - {{aluno.nota}}
+            <span v-if = "aluno.nota >= 9"> | Quadro de Honra</span>
+            <span v-else-if="aluno.nota >= 7"> | Aprovado</span>
+            <span v-else-if="aluno.nota > 3"> | Recuperação</span>
+            <span v-else> | Reprovado</span>
+        </p>
+        <ul style="list-style: none;">
+            <li v-for="n in 5">
+                <span v-show="n % 2 == 1">{{n}}</span>
+                <!--
+                A diretiva v-show é usada para controlar a visibilidade de um elemento com base em uma expressão booleana. Quando o valor da expressão é true, o elemento é exibido; quando o valor é false, o elemento é ocultado, mas ele permanece no DOM. O Vue usa CSS para alternar a exibição ou ocultação do elemento, adicionando ou removendo a propriedade display: none conforme necessário.
+                
+                v-if também permite a renderização condicional de elementos, mas com uma diferença importante. Quando a expressão condicional do v-if é avaliada como false, o elemento não é renderizado no DOM. Isso significa que ele é completamente adicionado ou removido do DOM, dependendo do valor da expressão.
+            -->
+            </li>
+        </ul>
+    </div>
     <script>
-        // ...
+        new Vue ({
+            el: "#app",
+            data: {
+                alunos: [
+                   {nome: "Edson", nota: 7.8},
+                   {nome: "Ana", nota: 9.1},
+                   {nome: "Berto", nota: 6.8},
+                   {nome: "Marcelo", nota: 2.8}
+                ]
+            }
+        })
     </script>
 </body>
 </html>

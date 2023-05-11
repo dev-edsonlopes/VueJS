@@ -7,9 +7,50 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Canal(sem biding)</a> Não funciona</p> <!-- Não funciona para funcionar tem que usar o biding porque nesse exemplo ele não interpola-->
+        <p><a v-bind:href="link">Canal(com biding)</a></p>
+        <!-- short sintaxe :href = "link"-->
+        <p>
+            <input type="text" v-model="nome" /><br />
+            <span>{{ nome }}</span>
+        </p>
+        <!--
+        <p>{{ message }}</p>
+        <button @click = "updateMessage()">Atualizar Mensagem</button>
+        -->
+    </div>
     <script>
-        // ...
+        new Vue ({
+            el: "#app",
+            data: {
+                nome: "",
+                link: "https://youtube.com/cod3rcursos",
+                message: 'Mensagem'
+            },/*
+            methods: {
+                updateMessage() {
+                    this.message = 'Nova mensagem!'
+                },
+            },*/
+            watch: {
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase());
+                },
+
+                message(newValue, oldValue) {
+                    console.log('A mensagem foi alterada!')
+                    console.log('Novo valor: ', newValue)
+                    console.log('Valor Anterior: ', oldValue)
+                }
+            }
+            /*
+                Watch - Permite que reaja a mundanças em dados dentro de um componente Vue.
+
+                Usando o watch pode ser definido uma propriedade ou uma expressão computada que deve ser observada para mudanças. Sempre que essa propriedade ou expressão computada for alterada, uma função callback será acionada, permitindo que você execute lógica personalizada em resposta a essa mudança.
+            */
+        })
     </script>
 </body>
 </html>
