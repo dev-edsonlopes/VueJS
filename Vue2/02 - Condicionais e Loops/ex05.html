@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- Exercício 5:
+    Crie uma instância Vue que exiba uma tabela de produtos. Cada produto deve ter propriedades como nome, preço e quantidade em estoque. Use a diretiva v-if para exibir apenas os produtos que estão em estoque. -->
+
+    <div id="app">
+        <table>
+            <thead>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Quantidade em Estoque</th>
+            </thead>
+            <tbody v-for="produto in produtos" v-if="produto.estoque !== 0">
+                <tr>
+                    <td>{{produto.nome}}</td>
+                    <td>{{produto.preco}}</td>    
+                    <td :class="{ 'out-of-stock': produto.estoque === 0 }">{{produto.estoque}}</td>                    
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                produtos: [
+                    { nome: "Computador", preco: 1350, estoque: 5 },
+                    { nome: "Celular", preco: 1800, estoque: 15 },
+                    { nome: "iPad", preco: 3523.95, estoque: 0 },
+                    { nome: "WATCH", preco: 230, estoque: 100 },
+                    { nome: "Mouse", preco: 90, estoque: 40 },
+                    { nome: "Tablet", preco: 799.90, estoque: 0 }
+                ]
+            }
+        })
+    </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .out-of-stock {
+            color: red;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<!-- Exercício 3:
+Crie uma instância Vue que exiba uma lista de tarefas. Cada tarefa deve ter uma propriedade concluída que pode ser verdadeira ou falsa. Use a diretiva v-if para exibir apenas as tarefas concluídas. -->
+<div id="app">
+    <h1>Tarefas Concluídas</h1>
+    <ul>
+        <li v-for="tarefa in tarefas" v-if="tarefa.concluida">
+           <p>{{ tarefa.descricao }}</p> 
+        </li>
+    </ul>
+</div>
+<script>
+    var app = new Vue ({
+        el: '#app',
+        data: {
+            tarefas: [
+                {descricao: "Estudar VueJS", concluida: true},
+                {descricao: "Estudar SQL", concluida: false},
+                {descricao: "Dar banho no Cachorro", concluida: true},
+                {descricao: "Fazer janta", concluida: false},
+                {descricao: "Café da manhã", concluida: true},
+                {descricao: "Almoçar", concluida: false},
+                {descricao: "Pedi almoço", concluida: true}
+
+            ]
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionais e Loops</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <div id="app-if">
+        <div v-if="mostrar">
+            Messagem gerada
+        </div>
+    </div>
+    <div id="app-for">
+        <ul>
+            <li v-for="texto in textos">
+                {{ texto.text }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app_if = new Vue ({
+            el: '#app-if',
+            data: {
+                mostrar: true
+            }
+        })
+
+        var app_for = new Vue ({
+            el: '#app-for',
+            data: {
+                textos: [
+                    {text: 'Texto 1'},
+                    {text: 'Texto 2'},
+                    {text: 'Texto 3'}
+                ]
+            }
+        })
+
+    </script>
+</body>
+</html>

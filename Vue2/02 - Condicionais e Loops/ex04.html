@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- Exercício 4:
+        Crie uma instância Vue que permita ao usuário adicionar itens a uma lista usando um formulário. Exiba a lista de itens usando a diretiva v-for. -->
+    <div id="app">
+        <form @submit.prevent>
+            <h1>Listar Item</h1>
+            <label for="nome"></label>
+            <input type="text" v-model="novoItem" placeholder="Digite o nome do item" name="nome">
+        </form>
+        <button @click="adicionarItem">Adicionar</button>
+        <ol>
+            <li v-for="item in itens">
+                {{ item.nome }}
+            </li>
+        </ol>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                itens: [],
+                novoItem: ''
+            },
+            methods: {
+                adicionarItem() {
+                    if (this.novoItem.trim() !== '') {
+                        this.itens.push({ nome: this.novoItem });
+                        this.novoItem = '';
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- Exercício 6:
+    Crie uma instância Vue que exiba uma lista de alunos. Cada aluno deve ter uma propriedade nota que varia de 0 a 10. Use a diretiva v-for para exibir a lista de alunos e a diretiva v-if para exibir apenas os alunos que têm uma nota maior que 7. -->
+    <div id="app">
+        <h1>Lista dos Aprovados</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="aluno in alunos" v-if="aluno.nota > 7">
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.nota }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h1>Lista de Reprovados</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="aluno in alunos" v-if="aluno.nota < 7">
+                    <td>{{ aluno.nome }}</td>
+                    <td class="reprovados">{{ aluno.nota }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                alunos: [
+                    { nome: 'Edson Lopes', nota: 8.3 },
+                    { nome: 'Matheus', nota: 7.7 },
+                    { nome: 'Rafael', nota: 4.9 },
+                    { nome: 'Luiz', nota: 6.5 },
+                    { nome: 'Marcelo', nota: 9.5 }
+                ]
+            }
+        })
+    </script>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .reprovados {
+            color: red;
+        }
+    </style>
+</body>
+
+</html>
