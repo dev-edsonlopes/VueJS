@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compondo com Componentes</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <div id="app">
+        <ol>
+            <todos-itens 
+            v-for="item in mercearia" 
+            v-bind:componente="item" 
+            v-bind:key="item.id">
+            </todos-itens>
+        </ol>
+    </div>
+    <script>
+        //definindo um novo componente
+        Vue.component('todos-itens', {
+            props: ['componente'],
+            template: '<li>{{ componente.text }}</li>'
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                mercearia: [
+                    { id: 0, text: 'Vegetais' },
+                    { id: 1, text: 'Queijo' },
+                    { id: 2, text: 'Alimentos não comestivel' }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

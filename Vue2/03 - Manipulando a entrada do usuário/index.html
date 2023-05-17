@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando a entrada do usuário</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>   
+
+    <div id="app">
+        <input type="text" v-model="message"> // diretiva bidirecional.
+        <button v-on:click="reverseMessage">Mensagem Invertida</button> //v-on diretivas que dispara o evento Vue.
+        <p>{{ message }}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js'
+            },
+            methods: { // Altera o estado do elemento sem o DOM, deixando todas as responsibilidade para o Vue
+                reverseMessage() {
+                    this.message = this.message
+                    .split('')
+                    .reverse()
+                    .join('')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

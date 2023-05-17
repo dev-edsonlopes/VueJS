@@ -1,0 +1,45 @@
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <div id="app">
+        <h1>Lista de Tarefas</h1>
+        <form @submit.prevent="adicionarTarefa">
+            <input type="text" v-model="novaTarefa" placeholder="Digite uma nova tarefa">
+            <button type="submit">Adicionar</button>
+        </form>
+        <ul>
+            <li v-for="(tarefa, index) in tarefas" :key="index">
+                <span :class="{ 'concluida': tarefa.concluida }">{{ tarefa.descricao }}</span>
+                <button @click="marcarConcluida(index)">Concluir</button>
+                <button @click="removerTarefa(index)">Remover</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                novaTarefa: '',
+                tarefas: []
+            },
+            methods: {
+                adicionarTarefa() {
+                    if (this.novaTarefa.trim() !== '') {
+                        this.tarefas.push({
+                            descricao: this.novaTarefa,
+                            concluida: false
+                        });
+                        this.novaTarefa = '';
+                    }
+                },
+                marcarConcluida(index) {
+                    this.tarefas[index].concluida = true;
+                },
+                removerTarefa(index) {
+                    this.tarefas.splice(index, 1);
+                }
+            }
+        });
+    </script>
+</body>

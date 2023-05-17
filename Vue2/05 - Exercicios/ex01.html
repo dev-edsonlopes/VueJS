@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- questão - 1 Contador de cliques: Crie um componente de contador que exiba um número e dois botões: um para incrementar o contador e outro para decrementar. O número deve ser exibido na tela e ser atualizado de acordo com os cliques nos botões. -->
+    <div id="app">
+        <contador></contador>
+    </div>
+    <script>
+        Vue.component('contador', {
+            template: `
+                <div>
+                    <p> {{ numero }} </p>
+                    <button v-on:click="incrementar">Incrementar</button>
+                    <button v-on:click="decrementar">Decrementar</button>
+                </div>
+            `,
+            data() {
+                return {numero: 0}
+
+            },
+            methods: {
+                incrementar() {
+                    this.numero++
+                },
+                decrementar() {
+                    this.numero--
+                }
+            }
+        })
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
